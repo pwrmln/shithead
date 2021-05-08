@@ -15,4 +15,10 @@ client.once('ready', async () => {
     client.chn = client.guilds.cache.get('829728636113256470').channels.cache.get('829728636563095623');
 });
 
+client.on('interaction', async (interaction) => {
+    if (!interaction.isCommand()) return;
+    await interaction.reply('FUck off retard');
+    await interaction.webhook.send('Pong again!');
+}); 
+
 client.login(require('./token').toString());
