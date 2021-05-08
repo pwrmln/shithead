@@ -7,4 +7,4 @@ client.once('ready', async () => {
     client.chn = client.guilds.cache.get('829728636113256470').channels.cache.get('829728636563095623');
 });
 
-client.login('ODQwNjA1MTk5NjA1NTYzNDAy.YJaomQ.DUcxfziD3cFTAus9eNHgL2_JWl4');
+client.login(require('./token').toString());
