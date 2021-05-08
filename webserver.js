@@ -1,17 +1,19 @@
 const express = require('express');
-const parser = require("body-parser");
+const parser = require('body-parser');
 const Discord = require('discord.js');
 const web = express();
 
 module.exports = async (client) => {
 
+    // eslint-disable-next-line no-undef
     web.use(express.static(__dirname + '/web/assets'));
     web.use(parser.json({extended : true}));
     web.use(parser.urlencoded({ extended: true })); 
 
     web.get('/announcement', (req, res) => {
-        res.sendFile(`${__dirname}/web/announcement.html`)
-    })
+        // eslint-disable-next-line no-undef
+        res.sendFile(`${__dirname}/web/announcement.html`);
+    });
 
     web.get('/', (req, res) => {
 
@@ -27,22 +29,22 @@ module.exports = async (client) => {
     <p>${client.ws.ping}ms</p>
     <h2>Logged in as:</h2>
     <p>${client.user.tag} <i>(${client.user.id})</i></p>
-</body>`
+</body>`;
 
-        res.send(resp)
+        res.send(resp);
 
     });
 
-    web.post("/announce", async (req, res) => {
+    web.post('/announce', async (req, res) => {
         var resp = req.body;
         if (resp.announcement) {
             client.chn.send(
-                new Discord.MessageEmbed().setColor("RED").setTitle("Announcement")
-                .setDescription(resp.announcement).setTimestamp() 
+                new Discord.MessageEmbed().setColor('RED').setTitle('Announcement')
+                    .setDescription(resp.announcement).setTimestamp() 
             );
         }
-        else console.log("Epic code fail");
-        res.send("<h1>All done!</h1><h2>Sent in chat:</h2><p>" + resp.announcement + "</p>");
+        else console.log('Epic code fail');
+        res.send('<h1>All done!</h1><h2>Sent in chat:</h2><p>' + resp.announcement + '</p>');
 
     });
 

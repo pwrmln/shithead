@@ -4,5 +4,5 @@ module.exports.data = {
 };
 
 module.exports.run = async (client, interaction) => {
-    interaction.reply("White guys fart in my face")
+    interaction.reply('White guys fart in my face');
 };
